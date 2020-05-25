@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -16,7 +17,7 @@ int main(){
     int **a = new int*[3];
     
     for (int count = 0; count < 3; count++)
-        a[count] = new int[count+1];
+        a[count] = new int[3];
     
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)

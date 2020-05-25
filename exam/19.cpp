@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using std::cin;
 using std::cout;
 using std::endl;
 using std::vector;
+using std::sort;
 
 struct stack {
     int a[1000];
@@ -65,15 +67,16 @@ int main(){
     
     vector<int> v(10);
     
-    cout << v.size << endl;
+    cout << v.size() << endl;
     
     v.push_back(19); //добавить элемент в конец
+    cout << v.size() << endl;
     v.pop_back(); //удалить конец
     v.begin(); //указатель на начало
     v.end(); //указатель на конец
-    v.sort(v.begin, v.end);  //сортировка
+    sort(v.begin(), v.end());  //сортировка
     
-    //доступ к произв элементу -- О(1), удалить все элементы -- О(n)
+    //доступ к произв элементу -- О(1), удалить все элементы -- О(n), запись в конец - O(1), запись в произвольную точку - O(n)
     
     return 0;
 }

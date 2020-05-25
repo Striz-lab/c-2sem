@@ -31,7 +31,6 @@ int* Func(int* Array, int size)
        new_array[i] = 10;
     }
     return new_array;
-    delete [] new_array;
 }
 
 int main(){

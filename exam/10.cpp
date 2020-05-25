@@ -4,9 +4,9 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-void countingSort(int* array, int n) {
-    int *c = new int[n];
-    for (int i = 0; i < n; i++)
+void countingSort(int* array, int n, int m) {
+    int *c = new int[m];
+    for (int i = 0; i < m; i++)
         c[i] = 0;
     
     for (int i = 0; i < n; i++) {
@@ -14,10 +14,15 @@ void countingSort(int* array, int n) {
     }
         
     int b = 0;
-    for (int i = 0; i < n; i++){
-        for (int j = 0; j < c[i]; j++) {
-            array[b] = i;
-            b = b + 1;
+    int place = -1;
+    while (b != n){
+        place++;
+        while (c[place] == 0){
+            place++;
+            for (int i = 0; i < c[place]; i++){
+                array[b] = place;
+                b++;
+            }
         }
     }
 }
@@ -35,23 +40,29 @@ int main(){
      uint64_t    8 байт unsigned    от 0 до 18 446 744 073 709 551 615
      */
     
-    int n;
+    int n, m = 0;
     bool flag = 1;
     
     cin >> n;
     
     int *a = new int[n];
     
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++){
         cin >> a[i];
+        if (a[i] > m){
+            m = a[i];
+        }
+    }
+    
     
     for (int i = 1; i < n; i++)
         if (a[i] <= a[i-1])
             flag = false;
     
+    
     if (flag == false){
         cout << "not good" << endl;
-        countingSort(a, n);
+        countingSort(a, n, m);
     }
     else
         cout << "not bad" << endl;

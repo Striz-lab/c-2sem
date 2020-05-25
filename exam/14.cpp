@@ -6,21 +6,16 @@ using std::endl;
 
 
 
-template<typename T>
-void insertion_sort(T array[], std::size_t size){
-    for (std::size_t sorted_size = 1; sorted_size < size; sorted_size++)
-    {
-        if (array[sorted_size] < array[sorted_size - 1])
-        {
-            T tmp = std::move(array[sorted_size]);
-
-            std::size_t idx = sorted_size;
-            for (; idx != 0 && tmp < array[idx - 1]; idx--)
-            {
-                array[idx] = std::move(array[idx - 1]);
+void insertion_sort(int *array, int n){
+    for (int ssize = 0; ssize < n; ssize++){
+        int min = array[ssize], mplace = ssize;
+        for (int i = ssize; i < n; i++){
+            if (array[i] < min){
+                min = array[i];
+                mplace = i;
             }
-            array[idx] = tmp;
-        }
+            std::swap(array[ssize], array[mplace]);
+        }    
     }
 }
 
